@@ -1,6 +1,6 @@
 import requests
 import sqlite3
-
+import time
 
 #API
 base_url = "https://api.open-meteo.com/v1/forecast"
@@ -12,10 +12,16 @@ def get_weather(lat, lon, location):
     params["latitude"] = lat
     params["longitude"] = lon
 
-    response = requests.get(base_url, params=params)
-    data = response.json()
-    
-    return {"location": location, "date": data["daily"]["time"][1], "temperature": data["daily"]["temperature_2m_max"][1], "wind": data["daily"]["windspeed_10m_max"][1]}
+    for attempt in range(3):
+        try:
+            response = requests.get(base_url, params=params, timeout=30)
+            data = response.json()
+            return {"location": location, "date": data["daily"]["time"][1], "temperature": data["daily"]["temperature_2m_max"][1], "wind": data["daily"]["windspeed_10m_max"][1]}
+        except requests.exceptions.Timeout:
+            if attempt == 2:
+                raise
+            print(f"Timeout, retrying... ({attempt+1}/3)")
+            time.sleep(5)
 
 #SAVE TO DATABASE
 def save_to_db(data):
