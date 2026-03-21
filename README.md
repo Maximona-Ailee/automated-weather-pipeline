@@ -65,3 +65,5 @@ on:
 ```
  
 After running the pipeline, it automatically commits and pushes the updated `poem.txt` back to the repository, which triggers GitHub Pages to redeploy.
+
+### Disclaimer: This project is created for academic purpose as part of the MLOps learning journey. It is not intended for commercial deployment
