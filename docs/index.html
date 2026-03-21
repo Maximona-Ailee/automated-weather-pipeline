@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Poem</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<h1>🌦️ Weather Poem</h1>
+
+<pre id="poem">
+Loading...
+</pre>
+
+<script>
+fetch("../poem.txt")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("poem").textContent = data;
+    });
+</script>
+
+</body>
+</html>
+
+<h2>🌍 Weather Data</h2>
+
+<div id="weather"></div>
+
+<script>
+fetch("../weather.json")
+    .then(response => response.json())
+    .then(data => {
+        let html = "";
+        data.forEach(item => {
+            html += `
+                <p>
+                <b>${item.location}</b><br>
+                🌡️ Temp: ${item.temperature}°C<br>
+                💨 Wind: ${item.wind}
+                </p>
+                <hr>
+            `;
+        });
+        document.getElementById("weather").innerHTML = html;
+    });
+</script>
