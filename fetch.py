@@ -36,11 +36,22 @@ def generate_poem(data):
     {data[0]['location']}: {data[0]['temperature']}°C, wind {data[0]['wind']}
     {data[1]['location']}: {data[1]['temperature']}°C, wind {data[1]['wind']}
     {data[2]['location']}: {data[2]['temperature']}°C, wind {data[2]['wind']}
+    Example:
+    Warm sun kisses Hua Hin’s shore,
+    Bangkok hums with rain once more,
+    Aalborg whispers cold and grey,
+    Where would you rather stay?
+
+    แดดอุ่นที่หัวหินพริ้มไหว
+    กรุงเทพฝนพรำไม่จางหาย
+    อัลบอร์กหนาวลมพัดแรง
+    ที่ไหนกันนะ น่าไปแฝงกาย
+
     requirements:
-    - compare the weather
-    - suggest the nices place to be, and short about activity should be doing or foods should be eating in order to that place and weather
+    - Follow a similar petic style but include the weather information and compare the weather
+    - The poem should edded with suggestion on the nicest place to be, and short about activity should be doing or foods should be eating in order to that place and weather
     - write in TWO languages: English and Thai
-    - keep it short and creative
+    - keep its lenght medium and creative, can be amused
     - respond with PLAIN TEXT ONLY, no markdown symbols like *, **, ###
     """
     response = client.chat.completions.create(
