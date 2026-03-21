@@ -51,7 +51,7 @@ def generate_poem(data):
 
 #SAVE POEM
 def save_poem(poem):
-    with open("poem.txt", "w", encoding="utf-8") as f:
+    with open("docs/poem.txt", "w", encoding="utf-8") as f:
         f.write(poem)
 
 #MAIN
