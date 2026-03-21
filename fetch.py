@@ -41,6 +41,7 @@ def generate_poem(data):
     - suggest the nices place to be, and short about activity should be doing or foods should be eating in order to that place and weather
     - write in TWO languages: English and Thai
     - keep it short and creative
+    - respond with PLAIN TEXT ONLY, no markdown symbols like *, **, ###
     """
     response = client.chat.completions.create(
         model="openai/gpt-oss-120b",
